@@ -1,14 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './App.css';
-import { Icon, Grid } from 'semantic-ui-react';
+import { Icon, Grid, Container } from 'semantic-ui-react';
 import axios from 'axios';
+
 import PropertiesList from './PropertiesList/PropertiesList';
+import Header from './Header/Header';
 
 
 class App extends Component {
   state = {
     data: [],
     isLoading: false,
+    firstLayout: true,
   }
 
   componentDidMount = () => {
@@ -28,19 +31,33 @@ class App extends Component {
       }));
   }
   
+  chooseLayout = (prop) =>{
+      this.setState({firstLayout: prop});
+      console.log(this.state.firstLayout);
+  }
 
   render() {
     return (
-      <Grid columns={3} divided>
-            <Grid.Row>
-               
-                  {this.state.isLoading ?  <Icon loading name='spinner' color='red'/> : ''}
-                  <PropertiesList 
-                    info = {this.state.data}
-                  />
-              
-            </Grid.Row>
-        </Grid>
+      <Fragment>
+         
+         <Container>
+          <Header
+            chooseLayout = {this.chooseLayout}
+          />
+           <Grid columns={4}>
+              <Grid.Row>
+                    {this.state.isLoading ?  <Icon loading name='spinner' color='red'/> : ''}
+                    <PropertiesList 
+                      info = {this.state.data}
+                      firstLayout = {this.state.firstLayout}
+                    />
+              </Grid.Row>
+          </Grid>
+         </Container>
+        
+       
+      </Fragment>
+      
     );
   }
 }

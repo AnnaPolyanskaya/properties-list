@@ -1,0 +1,23 @@
+.sec-lay{
+    position: relative;
+}
+.sec-lay .meta{
+    position: absolute;
+    top: 0px;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    widows: 100%;
+    padding: 5px 20px;
+}
+.sec-lay .meta .date{
+    color: violet;
+}
+
+.img-group .img-gr-img, .img-group .img-gr-img:first-child{
+    width: 50%;
+    float: left;
+}
+.img-group .img-gr-img:nth-child(2n+1){
+    width: 100%;
+    float: none;
+}

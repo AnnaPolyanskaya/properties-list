@@ -1,5 +1,7 @@
-import React, { Component } from 'react'
-import PropertiesItem from '../PropertiesItem/PropertiesItem';
+import React, { Component, Fragment } from 'react'
+
+import FirstLayout from '../Layout/FirstLayout';
+import SecondLayout from '../Layout/SecondLayout';
 
 
 export default class PropertiesList extends Component {
@@ -7,26 +9,39 @@ export default class PropertiesList extends Component {
   
     
   render() {
-        
-        console.log(this.props.info);
         if(this.props.info !== null || this.props.info !== undefined){
-            var r = this.props.info.map(it => {
+            var firstLayout = this.props.info.map(it => {
                 return (
-                    <PropertiesItem
+                    <FirstLayout
                         key = {it.id}
                         id = {it.id}
-                        full_address = {it.full_full_address}
+                        full_address = {it.full_address}
                         price = {it.price}
                         description = {it.description}
                         images = {it.images}
                         area = {it.area}
                     />
                 );
-            });   
-        }     
-        
+            }); 
+            var secondLayout = this.props.info.map(it => {
+                return (
+                    <SecondLayout
+                        key = {it.id}
+                        id = {it.id}
+                        full_address = {it.full_address}
+                        price = {it.price}
+                        description = {it.description}
+                        images = {it.images}
+                        area = {it.area}
+                    />
+                );
+            });
+
+        } 
         return(
-        <div>{r}</div>
+            <Fragment>
+                {this.props.firstLayout ? firstLayout : secondLayout}
+            </Fragment>
         )  
         
     } 
