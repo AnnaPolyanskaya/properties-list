@@ -44,7 +44,7 @@ class App extends Component {
           <Header
             chooseLayout = {this.chooseLayout}
           />
-           <Grid columns={4}>
+           <Grid columns={4} stackable doubling>
               <Grid.Row>
                     {this.state.isLoading ?  <Icon loading name='spinner' color='red'/> : ''}
                     <PropertiesList 

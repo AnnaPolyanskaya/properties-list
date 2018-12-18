@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './secondLayout.css';
-import { Card, Icon, Image, Grid } from 'semantic-ui-react';
+import { Card, Icon, Image, Grid, Label } from 'semantic-ui-react';
 
 export default class SecondLayout extends Component {
   render() {
@@ -10,11 +10,29 @@ export default class SecondLayout extends Component {
             <Card id={this.props.id}>
                 <div className='sec-lay'>
                     <Card.Meta>
-                        <span className='date'>Price: {this.props.price}</span>
+                        <div className='date'>
+                            <Label as='a' color='red' tag>
+                                Price: {this.props.price}
+                            </Label>
+                        </div>
                     </Card.Meta>
-                    <div className='img-group'>
-                        {this.props.images.length > 1 ? this.props.images.map(it =>  <div className='img-gr-img'><Image src={it} /></div>) : <Image  src={this.props.images}/>}
-                    </div>
+                    {this.props.images.length > 1 
+                        ? 
+                        <div className='img-hold'>
+                            {this.props.images.map((it, i ) =>  
+                                <div className='item-img'>
+                                   <Image key={i}  src={it}  fluid /> 
+                                </div>
+                            )}
+                        </div>
+                        : 
+                        <div className='img-hold'>
+                            <div className='item-img'>
+                                <Image  src={this.props.images}/>
+                            </div>
+                        </div>
+                    }
+                
                 </div>
                 <Card.Content>
                     <Card.Header>{this.props.full_address}</Card.Header>

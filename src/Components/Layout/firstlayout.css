@@ -1,17 +1,3 @@
-.sec-lay{
-    position: relative;
-}
-.sec-lay .meta{
-    position: absolute;
-    top: 0px;
-    z-index: 100;
-    widows: 100%;
-    padding: 5px 0px;
-}
-.sec-lay .meta .date{
-    color: violet;
-}
-
 .card{
     margin: 20px auto !important;
 }
@@ -33,4 +19,7 @@
     object-fit: cover;
     height: 150px !important;
     max-height: 150px;
+}
+.meta{
+    margin: 10px 0;
 }

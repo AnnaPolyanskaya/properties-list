@@ -7,7 +7,7 @@ export default class Header extends Component {
     return (
       <div className='header-main'>
             <h2>Choose layout</h2>
-            <Button.Group>
+            <Button.Group color='violet'>
                 <Button onClick={() => { this.props.chooseLayout(true)}}>One</Button>
                 <Button onClick={() => { this.props.chooseLayout(false)}}>Two</Button>
             </Button.Group>
